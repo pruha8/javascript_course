@@ -8,90 +8,37 @@
 <!--
 Обязательное задание.
 
-Необходимо реализовать четыре функции, каждая функция должна принимать по два
-числа и выполнять одну из операций (каждая функция выполняет одну из них):
-1. Сложение
-2. Разность
-3. Умножение
-4. Деление
-
-Необходимо сделать так, чтобы функция вернула число, например выражение
-`console.log(sum(2, 6));` должно вывести число 8 в консоль (sum - функция
-сложения в данном примере, ваши названия функций могут отличаться).
-
-Округлять значения, которые возвращают функции не нужно, однако, обратите
-внимание на разность, функция должна вычесть из большего числа меньшее, либо
-вернуть 0, если числа равны.
-
-Функциям всегда передаются корректные числа, проверки на NaN, Infinity делать
-не нужно.
-
-Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+1. Необходимо вывести в консоль массив продуктов в котором есть хоть одна
+фотография используя метод filter. Исходные данные - массив products.
+2. Необходимо отсортировать массив products используя метод sort по цене,
+начиная с самой маленькой, заканчивая самой большой ценой, после чего вывести
+отсортированный массив в консоль.
 -->
 <script>
   "use strict";
-  
-  
-  getSum();
-  getDifference();
-  getMultiplication();
-  getDivision();
 
-  /*
-  Считает сумму чисел.
-  a - первый параметр
-  b - второй параметр
-  сумма чисел a + b
-  */
+  const products = [
+    { id: 3, price: 127, photos: ["1.jpg", "2.jpg", ], },
+    { id: 5, price: 499, photos: [], },
+    { id: 10, price: 26, photos: ["3.jpg",], },
+    { id: 8, price: 78, },
+  ];
+// products.filter(function(photos) {
+//   console.log(products[0].photos);
+//   console.log(products[1].photos);
+//   console.log(products[2].photos);
+//   console.log(products[3].photos);
+// });
 
-  function getSum(a, b) { 
-    var a = 4;
-    var b = 5;
-    console.log(a + b);
-    // return a + b
-  }
+// console.log(products.filter(
+//   products => console.log(products.photos && products.photos.length !== 0)));
 
-  /*
-  Считает разность чисел.
-  a - первый параметр
-  b - второй параметр
-  разность чисел a - b, при этом вычитается разница из большего числа.
-  */
+console.log(products.filter(
+  products => console.log("photos" in products && products.photos.length !== 0))
+);
 
-  function getDifference(a, b) {
-    var a = 4;
-    var b = 5;
-    if (a > b){
-      console.log(a - b);
-    }
-    console.log(b - a);
-  }
-
-  /*
-  Считает умножение чисел.
-  a - первый параметр
-  b - второй параметр
-  умножение чисел a * b
-  */
-  
-  function getMultiplication (a, b) {
-    var a = 4;
-    var b = 5;
-    console.log(a * b);
-  }
-
-  /*
-  Считает деление чисел.
-  a - первый параметр
-  b - второй параметр
-  деление чисел a / b
-  */
-
-  function getDivision (a, b) {
-    var a = 4;
-    var b = 5;
-    console.log(a / b);
-  }
+products.sort((product1, product2) => product1.price - product2.price);
+  console.log(products);
 
 </script>
 </body>

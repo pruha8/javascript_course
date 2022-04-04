@@ -8,23 +8,71 @@
 <!--
 Обязательное задание.
 
-Необходимо пользователя попросить ввести температуру в градусах Цельсия,
-преобразовать введенное пользователем значение в соответствующую температуру
-в градусах по Фаренгейту и вывести в alert сообщение с текстом:
-"Цельсий: {C}, Фаренгейт: {F}"
-Где вместо {C} и {F} должны быть подставлены соответствующие значения, которые
-были получены ранее.
-Формула перевода градусов Цельсия в градусы Фаренгейта:
-градусы Фаренгейта = (9 / 5) * градусы Цельсия + 32
-
-Уточнение: пользователь всегда вводит корректное число.
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для продукта.
+Названия: `ProductES5` для es5 стиля, `ProductES6` для es6 стиля.
+При создании объекта от функции-конструктора/класса необходимо передавать имя
+и цену товара, эта информация должна быть сохранена в объекте.
+Также у объекта должна быть возможность выполнить метод `make25Discount`, данный
+метод должен уменьшать стоимость продукта на 25%.
+Необходимо продемонстрировать работу с объектом (в свободной форме).
 -->
 <script>
   "use strict";
-    const c = prompt('Введите температуру в градусах по Цельсию');
-    const f = (9 / 5) * c + 32;
-    alert('Тумпература ' + c + ' по Цельсию соответствует ' + f + ' по Фаренгейту');
-  
+
+/*
+const productES5 = {
+  name: 'Яблоки',
+  price: '40 руб.',
+  pricePerKg: function() {
+  console.log(`${this.name} стоят ${this.price} за килограмм.`);
+  },
+};
+productES5.pricePerKg();
+*/
+
+
+function ProductES5(name, price) {
+  this.name = name;
+  this.price = price;
+}
+
+ProductES5.prototype.make25Discount = function() {
+    this.price *= 0.75;
+  };
+
+const productES5 = new ProductES5('Яблоки', 50);
+console.log(`${productES5.name} стоят ${productES5.price} руб. за кг.`);
+productES5.make25Discount();
+console.log(`${productES5.name} стоят ${productES5.price} руб. за кг.`);
+
+const pricePerKg = new ProductES5('Груши', 80);
+console.log(`${pricePerKg.name} стоят ${pricePerKg.price} руб. за кг.`);
+pricePerKg.make25Discount();
+console.log(`${pricePerKg.name} стоят ${pricePerKg.price} руб. за кг.`);
+
+
+class ProductES6 {
+    constructor(name, price) {
+      this.name = name;
+      this.price = price;
+    }
+
+    make25Discount() {
+      this.price *= 0.75;
+    }
+  }
+
+  const productES6 = new ProductES5('Яблоки', 50);
+console.log(`${productES6.name} стоят ${productES6.price} руб. за кг.`);
+productES6.make25Discount();
+console.log(`${productES6.name} стоят ${productES6.price} руб. за кг.`);
+
+// const pricePerKg = new ProductES5('Груши', 80);
+// console.log(`${pricePerKg.name} стоят ${pricePerKg.price} руб. за кг.`);
+// pricePerKg.make25Discount();
+// console.log(`${pricePerKg.name} стоят ${pricePerKg.price} руб. за кг.`);
+
 </script>
 </body>
 </html>
